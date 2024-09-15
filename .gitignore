@@ -6,3 +6,9 @@
 
 # pre-commit
 .pre-commit-config.yaml
+
+#dev database
+db.sqlite3
+
+# compiled files
+*.pyc

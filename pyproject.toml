@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "mallakto-site-backend"
 version = "0.1.0"
-description = ""
+description = "Django REST framework for Mallakto company web-site"
 authors = ["sergey-royt <goodstop687@gmail.com>"]
 readme = "README.md"
 packages = [{include = "site_backend"}]
@@ -20,6 +20,7 @@ dj-database-url = "^2.2.0"
 flake8 = "^7.1.1"
 black = "^24.8.0"
 coverage = "^7.6.1"
+factory-boy = "^3.3.1"
 
 [build-system]
 requires = ["poetry-core"]
