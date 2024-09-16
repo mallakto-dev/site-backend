@@ -20,8 +20,8 @@ test:
 
 test-coverage:
 	poetry run coverage run manage.py test
-	poetry run coverage report -m --include=site_backend/* --omit=site_backend/settings.py
-	poetry run coverage xml --include=site_backend/* --omit=site_backend/settings.py
+	poetry run coverage report -m --include=app/* --omit=app/settings.py
+	poetry run coverage xml --include=app/* --omit=app/settings.py
 
 shell:
 	poetry run python manage.py shell

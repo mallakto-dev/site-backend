@@ -12,3 +12,7 @@ db.sqlite3
 
 # compiled files
 *.pyc
+
+# coverage
+.coverage
+coverage.xml

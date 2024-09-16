@@ -36,4 +36,3 @@ class TestGoodViewSet(TestCase):
         self.assertIsInstance(response.data, dict)
         self.assertEqual(item.id, response.data.get("id"))
         self.assertEqual(item.name, response.data.get("name"))
-        print(response.data)
