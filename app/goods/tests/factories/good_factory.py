@@ -1,6 +1,5 @@
 from factory.django import DjangoModelFactory
-from site_backend.goods.models import Good
-from site_backend.categories.models import Category
+from app.goods.models import Good
 
 
 class GoodFactory(DjangoModelFactory):

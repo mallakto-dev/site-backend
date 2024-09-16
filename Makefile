@@ -8,9 +8,12 @@ make-migrations:
 migrate:
 	poetry run python manage.py migrate
 
+show-migrations:
+	poetry run python manage.py showmigrations
+
 # development
 lint:
-	poetry run flake8 site_backend --exclude=settings.py
+	poetry run flake8 app --exclude=settings.py
 
 test:
 	poetry run python manage.py test
