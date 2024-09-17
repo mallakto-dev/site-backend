@@ -41,6 +41,12 @@ class Good(models.Model):
         default="NO",
     )
 
+    def __str__(self) -> models.CharField:
+        return self.name
+
+    def get_price(self):
+        return self.price
+
 
 class GoodPhoto(models.Model):
     """
