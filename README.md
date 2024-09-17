@@ -38,7 +38,6 @@ Django rest framework backend for company web-site
     ```
    
    save and exit
-
 4.  **Prepare database**
    ```commandline
     source .venv/bin/activate
@@ -59,14 +58,6 @@ Django rest framework backend for company web-site
    _for example ```DEV_HOST=0.0.0.0:5000```. Providing port without host also acceptable_
    _with ```DEV_HOST=7000``` server woold be hosted at ```http://127.0.0.1:7000```_
 
-### Application endpoints:
-
-- ```admin/``` - administrator interface
-- ```categories/``` - categories list
-- ```categories/{pk}/``` - category details
-- ```items/``` - shop items list
-- ```items/{pk}/``` - shop item details
-
 ### Admin panel:
 
 To use admin panel features like update or create database instances you should create admin user first:
@@ -74,6 +65,14 @@ To use admin panel features like update or create database instances you should 
 poetry run python manage.py createsuperuser
 ```
 admin panel will be enabled at ```admin/``` endpoint 
+
+### Application endpoints:
+
+- ```admin/``` - administrator interface
+- ```categories/``` - categories list
+- ```categories/{pk}/``` - category details
+- ```items/``` - shop items list
+- ```items/{pk}/``` - shop item details
 
 ### Environment variables
 
