@@ -4,14 +4,60 @@
 
 Django rest framework backend for company web-site
 
-### Environment variables
 
-#### **required:**
+### Local deploy
 
-```DATABASE_URL```, ```SECRET_KEY```
+1. **Requirements**
+   - python="^3.12"
+   ```commandline
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt update
+    sudo apt install python3.12.3
+   ```
+   - poetry
+   ```commandline
+    sudo apt update
+    sudo apt install pipx
+    pipx ensurepath
+    pipx install poetry
+   ```
+2. **Installation**
+   ```commandline
+    git clone git@github.com:mallakto-dev/site-backend.git
+    cd site-backend/
+    make install
+   ```
+3. **Set env variables**
+    ```commandline
+     nano .env
+    ```
+   add lines:
+    ```.env
+    DATABASE_URL=sqlite:///db.sqlite3
+    SECRET_KEY=secret_key
+    ```
+   
+   save and exit
 
-#### **optional:**
-
+4.  **Prepare database**
+   ```commandline
+    source .venv/bin/activate
+    make migrate
+    poetry run python manage.py loaddata dumpdb.json.gz 
+   ```
+5. **Launch Test server**
+   ```commandline
+    make dev
+   ```
+   
+   API will be enabled at ```http://127.0.0.1:8000```
+      
+   _To specify another host you should provide following variable in .env:_
+   ```commandline
+   DEV_HOST={host}:{port}
+   ```
+   _for example ```DEV_HOST=0.0.0.0:5000```. Providing port without host also acceptable_
+   _with ```DEV_HOST=7000``` server woold be hosted at ```http://127.0.0.1:7000```_
 
 ### Application endpoints:
 
@@ -20,3 +66,23 @@ Django rest framework backend for company web-site
 - ```categories/{pk}/``` - category details
 - ```items/``` - shop items list
 - ```items/{pk}/``` - shop item details
+
+### Admin panel:
+
+To use admin panel features like update or create database instances you should create admin user first:
+```commandline
+poetry run python manage.py createsuperuser
+```
+admin panel will be enabled at ```admin/``` endpoint 
+
+### Environment variables
+
+#### **required:**
+
+```DATABASE_URL```
+
+```SECRET_KEY```
+
+#### **optional:**
+
+```DEV_HOST``` _host where dev server will be running_
