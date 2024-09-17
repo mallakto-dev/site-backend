@@ -51,12 +51,14 @@ Django rest framework backend for company web-site
    
    API will be enabled at ```http://127.0.0.1:8000```
       
-   _To specify another host you should provide following variable in .env:_
+   _To specify another host you should use another command:_
    ```commandline
-   DEV_HOST={host}:{port}
+   poetry run python manage.py runserver {host:port}
    ```
-   _for example ```DEV_HOST=0.0.0.0:5000```. Providing port without host also acceptable_
-   _with ```DEV_HOST=7000``` server woold be hosted at ```http://127.0.0.1:7000```_
+   _for example_ ```poetry run python manage.py runserver 0.0.0.0:5000```.
+   
+   _Providing port without host also acceptable_
+   _with ```poetry run python manage.py runserver 7000``` server woold be hosted at ```http://127.0.0.1:7000```_
 
 ### Admin panel:
 
@@ -83,5 +85,3 @@ admin panel will be enabled at ```admin/``` endpoint
 ```SECRET_KEY```
 
 #### **optional:**
-
-```DEV_HOST``` _host where dev server will be running_

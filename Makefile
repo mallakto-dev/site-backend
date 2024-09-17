@@ -1,5 +1,3 @@
-include .env
-
 install:
 	poetry install
 
@@ -29,4 +27,4 @@ shell:
 	poetry run python manage.py shell
 
 dev:
-	poetry run python manage.py runserver $(DEV_HOST)
+	poetry run python manage.py runserver
