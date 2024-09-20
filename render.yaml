@@ -4,7 +4,7 @@ services:
     name: mallakto-backend
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "make start"
+    startCommand: "make dev"
     envVars:
       - key: SECRET_KEY
         generateValue: true
