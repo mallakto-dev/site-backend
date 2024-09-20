@@ -9,4 +9,4 @@ make install
 make migrate
 
 #flush to database
-poetry run python manage.py loaddata dumpdb.jdon.gz
+poetry run python manage.py loaddata dumpdb.json.gz
