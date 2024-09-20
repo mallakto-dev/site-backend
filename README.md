@@ -64,14 +64,10 @@ Django rest framework backend for company web-site
    _for example_ ```poetry run python manage.py runserver 0.0.0.0:5000```.
    
    _Providing port without host also acceptable_
-<<<<<<< HEAD
    _with ```poetry run python manage.py runserver 7000``` server woold be hosted at ```http://127.0.0.1:7000```_
-=======
    _with_ 
    ```poetry run python manage.py runserver 7000``` 
    _server would be hosted at ```http://127.0.0.1:7000```_
->>>>>>> Stashed changes
->>>>>>> dev
 
 ### Admin panel:
 
@@ -98,3 +94,5 @@ admin panel will be enabled at ```admin/``` endpoint
 ```SECRET_KEY```
 
 #### **optional:**
+
+```ALLOWED_HOSTS```
