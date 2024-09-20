@@ -1,0 +1,13 @@
+services:
+  - type: web
+    plan: free
+    name: mallakto-backend
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "make start"
+    envVars:
+      - key: DATABASE_URL
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
