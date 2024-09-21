@@ -34,12 +34,7 @@ class Good(models.Model):
 
     weight = models.IntegerField(verbose_name="Вес")
 
-    availability = models.CharField(
-        max_length=20,
-        verbose_name="Наличие",
-        choices={"YES": "В наличии", "NO": "Нет в наличии"},
-        default="NO",
-    )
+    availability = models.BooleanField(verbose_name="Наличие", default=False)
 
     def __str__(self) -> models.CharField:
         return self.name
