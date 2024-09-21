@@ -7,12 +7,7 @@ Django rest framework backend for company web-site
 
 ### Local deploy
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-```DATABASE_URL```, ```SECRET_KEY```
-=======
->>>>>>> dev
+
 1. **Requirements**
    - python="^3.12"
    ```commandline
