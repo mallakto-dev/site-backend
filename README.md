@@ -1,13 +1,6 @@
 # site-backend
 Django rest framework backend for company web-site
 
-### Environment variables
-
-#### **required:**
-
-<<<<<<< Updated upstream
-```DATABASE_URL```, ```SECRET_KEY```
-=======
 1. **Requirements**
    - python="^3.12"
    ```commandline
@@ -62,7 +55,12 @@ Django rest framework backend for company web-site
    _with_ 
    ```poetry run python manage.py runserver 7000``` 
    _server would be hosted at ```http://127.0.0.1:7000```_
->>>>>>> Stashed changes
+
+### Environment variables
+
+#### **required:**
+
+```DATABASE_URL```, ```SECRET_KEY```
 
 #### **optional:**
 
