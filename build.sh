@@ -6,7 +6,6 @@ set -o errexit
 make install
 
 # Apply any outstanding database migrations
-rm db.sqlite3
 make migrate
 
 #flush to database
