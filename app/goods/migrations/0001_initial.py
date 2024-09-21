@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
                 (
                     "shelf_life",
                     models.CharField(
-                        max_length=50, verbose_name="Срок годности"
+                        max_length=100, verbose_name="Срок годности"
                     ),
                 ),
                 ("weight", models.IntegerField(verbose_name="Вес")),

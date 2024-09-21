@@ -30,7 +30,7 @@ class Good(models.Model):
         max_length=255, verbose_name="Пищевая ценность"
     )
 
-    shelf_life = models.CharField(max_length=50, verbose_name="Срок годности")
+    shelf_life = models.CharField(max_length=100, verbose_name="Срок годности")
 
     weight = models.IntegerField(verbose_name="Вес")
 

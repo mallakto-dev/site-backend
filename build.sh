@@ -7,3 +7,6 @@ make install
 
 # Apply any outstanding database migrations
 make migrate
+
+#flush to database
+poetry run python manage.py loaddata dumpdb.json.gz
