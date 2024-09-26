@@ -4,11 +4,9 @@ from .models import Order, OrderItem
 
 class OrderItemSerializer(serializers.ModelSerializer):
 
-    product = serializers.PrimaryKeyRelatedField(read_only=True)
-
     class Meta:
         model = OrderItem
-        fields = ["product"]
+        fields = ["product", "quantity"]
 
 
 class OrderCreateSerializer(serializers.ModelSerializer):

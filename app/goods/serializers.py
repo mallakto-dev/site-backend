@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from .fields import SlugField
 from .models import Good, Category
 
 
@@ -15,11 +16,14 @@ class GoodSerializer(serializers.ModelSerializer):
 
     category = serializers.StringRelatedField()
 
+    slug = SlugField(source="name")
+
     class Meta:
         model = Good
         fields = [
             "id",
             "name",
+            "slug",
             "price",
             "ingredients",
             "category",
@@ -36,6 +40,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
     items = GoodSerializer(many=True)
 
+    slug = SlugField(source="name")
+
     class Meta:
         model = Category
-        fields = ["id", "name", "items"]
+        fields = ["id", "name", "slug", "items"]

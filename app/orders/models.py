@@ -1,3 +1,4 @@
+import django.core.validators
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -59,6 +60,8 @@ class OrderItem(models.Model):
     product = models.ForeignKey(
         Good, related_name="order_items", on_delete=models.PROTECT
     )
+
+    quantity = models.PositiveIntegerField(verbose_name="Количество")
 
     price = models.IntegerField(default=0)
 

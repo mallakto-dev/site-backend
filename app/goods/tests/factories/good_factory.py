@@ -17,3 +17,5 @@ class GoodFactory(DjangoModelFactory):
     shelf_life = "21 день"
 
     weight = 400
+
+    availability = True
