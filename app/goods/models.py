@@ -1,10 +1,22 @@
+import uuid
 from django.db import models
+
+from app.helpers import slugify_name
 
 
 class Category(models.Model):
     """Goods category model"""
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
     name = models.CharField(max_length=255, verbose_name="название")
+
+    slug = models.CharField(max_length=255, blank=True, default="")
+
+    def save(self, *args, **kwargs) -> None:
+        if not self.slug:
+            self.slug = slugify_name(self.name)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self) -> models.CharField:
         return self.name
@@ -13,7 +25,11 @@ class Category(models.Model):
 class Good(models.Model):
     """Model representing good"""
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
     name = models.CharField(max_length=255, verbose_name="Название")
+
+    slug = models.CharField(max_length=255, blank=True, default="")
 
     price = models.IntegerField(verbose_name="Цена")
 
@@ -35,6 +51,11 @@ class Good(models.Model):
     weight = models.IntegerField(verbose_name="Вес")
 
     availability = models.BooleanField()
+
+    def save(self, *args, **kwargs) -> None:
+        if not self.slug:
+            self.slug = slugify_name(self.name)
+        super(Good, self).save(*args, **kwargs)
 
     def __str__(self) -> models.CharField:
         return self.name

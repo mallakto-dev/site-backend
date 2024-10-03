@@ -1,7 +1,16 @@
 from rest_framework import serializers
 
-from .fields import SlugField
 from .models import Good, Category
+
+
+class BaseCategorySerializer(serializers.ModelSerializer):
+    """
+    Base category serializer items not included
+    """
+
+    class Meta:
+        model = Category
+        fields = ["id", "name", "slug"]
 
 
 class GoodSerializer(serializers.ModelSerializer):
@@ -14,9 +23,7 @@ class GoodSerializer(serializers.ModelSerializer):
         read_only=True, slug_field="source"
     )
 
-    category = serializers.StringRelatedField()
-
-    slug = SlugField(source="name")
+    category = BaseCategorySerializer()
 
     class Meta:
         model = Good
@@ -28,20 +35,17 @@ class GoodSerializer(serializers.ModelSerializer):
             "ingredients",
             "category",
             "nutrition_facts",
-            "nutrition_facts",
+            "shelf_life",
             "weight",
             "availability",
             "photo_path",
         ]
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class CategorySerializer(BaseCategorySerializer):
     """Serializer for category include category goods"""
 
     items = GoodSerializer(many=True)
 
-    slug = SlugField(source="name")
-
-    class Meta:
-        model = Category
+    class Meta(BaseCategorySerializer.Meta):
         fields = ["id", "name", "slug", "items"]

@@ -20,8 +20,12 @@ class TestGoodViewSet(TestCase):
 
         response = self.client.get(reverse("good-list"))
         self.assertEqual(len(response.data), 2)
-        self.assertEqual(item1.category.name, response.data[0]["category"])
-        self.assertEqual(item2.category.name, response.data[1]["category"])
+        self.assertEqual(
+            item1.category.name, response.data[0]["category"]["name"]
+        )
+        self.assertEqual(
+            item2.category.name, response.data[1]["category"]["name"]
+        )
         self.assertEqual(item1.name, response.data[0]["name"])
         self.assertEqual(item2.name, response.data[1]["name"])
 
@@ -34,5 +38,5 @@ class TestGoodViewSet(TestCase):
 
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertIsInstance(response.data, dict)
-        self.assertEqual(item.id, response.data.get("id"))
+        self.assertEqual(str(item.id), response.data.get("id"))
         self.assertEqual(item.name, response.data.get("name"))
