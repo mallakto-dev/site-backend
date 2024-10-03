@@ -33,7 +33,7 @@ class TestGoodViewSet(TestCase):
         item = GoodFactory(category=CategoryFactory())
 
         response = self.client.get(
-            reverse("good-detail", kwargs={"pk": item.pk})
+            reverse("good-detail", kwargs={"slug": item.slug})
         )
 
         self.assertEqual(response.status_code, HTTPStatus.OK)

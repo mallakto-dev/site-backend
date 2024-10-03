@@ -26,7 +26,7 @@ class TestCategoryViewSet(TestCase):
         category = CategoryFactory()
 
         response = self.client.get(
-            reverse("category-detail", kwargs={"pk": category.pk})
+            reverse("category-detail", kwargs={"slug": category.slug})
         )
 
         self.assertEqual(response.status_code, HTTPStatus.OK)
