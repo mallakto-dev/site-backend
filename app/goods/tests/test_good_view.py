@@ -38,5 +38,5 @@ class TestGoodViewSet(TestCase):
 
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertIsInstance(response.data, dict)
-        self.assertEqual(item.id, response.data.get("id"))
+        self.assertEqual(str(item.id), response.data.get("id"))
         self.assertEqual(item.name, response.data.get("name"))

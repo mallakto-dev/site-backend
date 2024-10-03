@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 from app.helpers import slugify_name
@@ -5,6 +6,8 @@ from app.helpers import slugify_name
 
 class Category(models.Model):
     """Goods category model"""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     name = models.CharField(max_length=255, verbose_name="название")
 
@@ -21,6 +24,8 @@ class Category(models.Model):
 
 class Good(models.Model):
     """Model representing good"""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     name = models.CharField(max_length=255, verbose_name="Название")
 

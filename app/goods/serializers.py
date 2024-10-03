@@ -3,7 +3,11 @@ from rest_framework import serializers
 from .models import Good, Category
 
 
-class GoodCategorySerializer(serializers.ModelSerializer):
+class BaseCategorySerializer(serializers.ModelSerializer):
+    """
+    Base category serializer items not included
+    """
+
     class Meta:
         model = Category
         fields = ["id", "name", "slug"]
@@ -19,7 +23,7 @@ class GoodSerializer(serializers.ModelSerializer):
         read_only=True, slug_field="source"
     )
 
-    category = GoodCategorySerializer()
+    category = BaseCategorySerializer()
 
     class Meta:
         model = Good
@@ -38,11 +42,10 @@ class GoodSerializer(serializers.ModelSerializer):
         ]
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class CategorySerializer(BaseCategorySerializer):
     """Serializer for category include category goods"""
 
     items = GoodSerializer(many=True)
 
-    class Meta:
-        model = Category
+    class Meta(BaseCategorySerializer.Meta):
         fields = ["id", "name", "slug", "items"]
