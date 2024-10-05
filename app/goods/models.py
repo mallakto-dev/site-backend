@@ -11,7 +11,12 @@ class Category(models.Model):
 
     name = models.CharField(max_length=255, verbose_name="название")
 
-    slug = models.CharField(max_length=255, blank=True, default="")
+    slug = models.CharField(
+        max_length=255,
+        blank=True,
+        default="",
+        help_text="Генерируется автоматически на основе имени",
+    )
 
     def save(self, *args, **kwargs) -> None:
         if not self.slug:
@@ -29,7 +34,16 @@ class Good(models.Model):
 
     name = models.CharField(max_length=255, verbose_name="Название")
 
-    slug = models.CharField(max_length=255, blank=True, default="")
+    slug = models.CharField(
+        max_length=255,
+        blank=True,
+        default="",
+        help_text="Генерируется автоматически на основе имени",
+    )
+
+    photo_path = models.CharField(
+        max_length=255, verbose_name="Ссылка на фото", blank=True
+    )
 
     price = models.IntegerField(verbose_name="Цена")
 
@@ -50,7 +64,7 @@ class Good(models.Model):
 
     weight = models.IntegerField(verbose_name="Вес")
 
-    availability = models.BooleanField()
+    availability = models.BooleanField(verbose_name="Наличие")
 
     def save(self, *args, **kwargs) -> None:
         if not self.slug:
@@ -62,31 +76,6 @@ class Good(models.Model):
 
     def get_price(self):
         return self.price
-
-
-class GoodPhoto(models.Model):
-    """
-    Class representing shop item photo source
-    """
-
-    good = models.ForeignKey(
-        to=Good,
-        on_delete=models.CASCADE,
-        verbose_name="Товар",
-        related_name="good",
-    )
-
-    source = models.CharField(max_length=255)
-
-
-class GoodPhotoRelation(models.Model):
-    """
-    Class representing shop item and its photo relations
-    table row will be deleted with good deletion
-    """
-
-    good = models.ForeignKey(Good, on_delete=models.CASCADE)
-    photo = models.ForeignKey(GoodPhoto, on_delete=models.SET_NULL, null=True)
 
 
 class CategoryGoodRelation(models.Model):

@@ -19,10 +19,6 @@ class GoodSerializer(serializers.ModelSerializer):
     Include link to photo source
     """
 
-    photo_path = serializers.SlugRelatedField(
-        read_only=True, slug_field="source"
-    )
-
     category = BaseCategorySerializer()
 
     class Meta:
@@ -31,6 +27,7 @@ class GoodSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "slug",
+            "photo_path",
             "price",
             "ingredients",
             "category",
@@ -38,7 +35,6 @@ class GoodSerializer(serializers.ModelSerializer):
             "shelf_life",
             "weight",
             "availability",
-            "photo_path",
         ]
 
 
