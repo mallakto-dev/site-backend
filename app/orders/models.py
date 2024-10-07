@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -11,6 +13,8 @@ User = get_user_model()
 
 class Order(models.Model):
     """Model representing order"""
+
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 
     username = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True
@@ -48,6 +52,10 @@ class Order(models.Model):
     def __str__(self):
         return "Заказ {}".format(self.pk)
 
+    @property
+    def amount(self):
+        return sum(item.get_cost() for item in self.items.all())
+
 
 class OrderItem(models.Model):
     """Model representing order items"""
@@ -72,6 +80,9 @@ class OrderItem(models.Model):
         self.price = price
 
         super(OrderItem, self).save(*args, **kwargs)
+
+    def get_cost(self):
+        return self.price * self.quantity
 
     def __str__(self) -> str:
         return "{}".format(self.product.name)

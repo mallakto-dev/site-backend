@@ -41,7 +41,7 @@ class Good(models.Model):
         help_text="Генерируется автоматически на основе имени",
     )
 
-    photo_path = models.CharField(
+    img_url = models.CharField(
         max_length=255, verbose_name="Ссылка на фото", blank=True
     )
 

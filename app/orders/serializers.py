@@ -11,11 +11,14 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
 class OrderCreateSerializer(serializers.ModelSerializer):
 
-    order_items = OrderItemSerializer(many=True, source="items")
+    order_items = OrderItemSerializer(
+        required=True, many=True, source="items", allow_null=False
+    )
 
     class Meta:
         model = Order
         fields = [
+            "id",
             "username",
             "name",
             "phone",
@@ -26,7 +29,21 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             "order_items",
         ]
 
-    def create(self, validated_data):
+    def to_internal_value(self, data):
+        """
+        Check if order items field contains any item,
+        to prevent creation of order not containing any items
+        """
+
+        if not data["order_items"]:
+            data["order_items"] = None
+        return super(OrderCreateSerializer, self).to_internal_value(data)
+
+    def create(self, validated_data) -> Order:
+        """
+        Create OrderItem objects from order_items field
+        """
+
         items_data = validated_data.pop("items")
         order = Order.objects.create(**validated_data)
         for item_data in items_data:

@@ -27,7 +27,7 @@ class GoodSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "slug",
-            "photo_path",
+            "img_url",
             "price",
             "ingredients",
             "category",
