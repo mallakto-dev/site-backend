@@ -26,7 +26,7 @@ class OrderConfirmationMessage(EmailMultiAlternatives):
                 </tr>
                 {order_table}
               </table>
-              <p><strong>Всего:</strong> {order.amount}</p>
+              <p><strong>Всего:</strong>    {order.amount} рублей</p>
               <h2>Контактные данные</h2>
               <p><strong>Имя:</strong> {order.name}</p>
               <p><strong>Телефон:</strong> {order.phone}</p>
