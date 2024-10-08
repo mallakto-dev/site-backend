@@ -1,8 +1,6 @@
 import uuid
-
 from django.db import models
 from django.contrib.auth import get_user_model
-
 from phonenumber_field.modelfields import PhoneNumberField
 
 from app.goods.models import Good
