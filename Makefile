@@ -13,7 +13,7 @@ show-migrations:
 
 # development
 lint:
-	poetry run flake8 app --exclude=settings.py, orders/app.py
+	poetry run flake8 app --exclude=settings.py,app/orders/apps.py
 
 test:
 	poetry run python manage.py test
