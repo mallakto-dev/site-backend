@@ -1,3 +1,4 @@
+from django.db.models.signals import post_save
 from rest_framework import serializers
 from .models import Order, OrderItem
 
@@ -42,10 +43,12 @@ class OrderCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data) -> Order:
         """
         Create OrderItem objects from order_items field
+        and send a signal after all order items created
         """
 
         items_data = validated_data.pop("items")
         order = Order.objects.create(**validated_data)
         for item_data in items_data:
             OrderItem.objects.create(order=order, **item_data)
+        post_save.send(sender=self.__class__, order=order)
         return order
