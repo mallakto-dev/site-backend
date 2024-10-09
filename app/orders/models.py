@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.auth import get_user_model
 from phonenumber_field.modelfields import PhoneNumberField
+from decimal import Decimal
 
 from app.goods.models import Good
 
@@ -73,7 +74,9 @@ class OrderItem(models.Model):
 
     quantity = models.PositiveIntegerField(verbose_name="Количество")
 
-    price = models.IntegerField(default=0, verbose_name="Цена")
+    price = models.DecimalField(
+        default=Decimal(0), verbose_name="Цена", max_digits=7, decimal_places=2
+    )
 
     def save(self, *args, **kwargs) -> None:
         """

@@ -72,7 +72,9 @@ class Good(models.Model):
         verbose_name="Описание", max_length=1000, blank=True
     )
 
-    price = models.IntegerField(verbose_name="Цена")
+    price = models.DecimalField(
+        verbose_name="Цена", max_digits=6, decimal_places=2
+    )
 
     ingredients = models.TextField(verbose_name="Состав", max_length=1000)
 
