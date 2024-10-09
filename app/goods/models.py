@@ -26,6 +26,10 @@ class Category(models.Model):
     def __str__(self) -> models.CharField:
         return self.name
 
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+
 
 class Good(models.Model):
     """Model representing good"""
@@ -74,8 +78,9 @@ class Good(models.Model):
     def __str__(self) -> models.CharField:
         return self.name
 
-    def get_price(self):
-        return self.price
+    class Meta:
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
 
 
 class CategoryGoodRelation(models.Model):

@@ -52,7 +52,9 @@ class Order(models.Model):
 
     @property
     def amount(self):
-        return sum(item.get_cost() for item in self.items.all())
+        return sum(item.cost for item in self.items.all())
+
+    amount.fget.short_description = "Всего"
 
 
 class OrderItem(models.Model):
@@ -63,24 +65,36 @@ class OrderItem(models.Model):
     )
 
     product = models.ForeignKey(
-        Good, related_name="order_items", on_delete=models.PROTECT
+        Good,
+        related_name="order_items",
+        on_delete=models.PROTECT,
+        verbose_name="Продукт",
     )
 
     quantity = models.PositiveIntegerField(verbose_name="Количество")
 
-    price = models.IntegerField(default=0)
+    price = models.IntegerField(default=0, verbose_name="Цена")
 
     def save(self, *args, **kwargs) -> None:
         """
         Add contemporary good's price
         """
-        price = self.product.price
-        self.price = price
+
+        self.price = self.product.price
 
         super(OrderItem, self).save(*args, **kwargs)
 
-    def get_cost(self):
-        return self.price * self.quantity
+    @property
+    def cost(self):
+        if self.quantity:
+            return self.price * self.quantity
+        return 0
+
+    cost.fget.short_description = "Цена"
 
     def __str__(self) -> str:
         return "{}".format(self.product.name)
+
+    class Meta:
+        verbose_name = "Элемент заказа"
+        verbose_name_plural = "Элементы заказа"
