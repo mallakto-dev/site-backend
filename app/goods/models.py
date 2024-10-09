@@ -49,6 +49,24 @@ class Good(models.Model):
         max_length=255, verbose_name="Ссылка на фото", blank=True
     )
 
+    img_caption = models.CharField(
+        max_length=255,
+        verbose_name="Подпись",
+        help_text="Для фото",
+        blank=True,
+    )
+
+    alternative_text = models.CharField(
+        max_length=255,
+        verbose_name="Альтернативный текст",
+        help_text="Для фото (важно для SEO и доступности)",
+        blank=True,
+    )
+
+    description = models.TextField(
+        verbose_name="Описание", max_length=1000, blank=True
+    )
+
     price = models.IntegerField(verbose_name="Цена")
 
     ingredients = models.TextField(verbose_name="Состав", max_length=1000)
