@@ -10,6 +10,8 @@ router.register(r"categories", CategoryViewSet)
 router.register(r"items", GoodViewSet)
 router.register(r"order", OrderViewSet)
 
+admin.site.site_header = "Админ-панель Mallakto"
+
 urlpatterns = [
     path("admin/", admin.site.urls),
 ]
