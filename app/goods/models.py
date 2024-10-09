@@ -19,6 +19,11 @@ class Category(models.Model):
     )
 
     def save(self, *args, **kwargs) -> None:
+        """
+        add slug for creating Good object
+        and save it
+        """
+
         if not self.slug:
             self.slug = slugify_name(self.name)
         super(Category, self).save(*args, **kwargs)
@@ -89,6 +94,11 @@ class Good(models.Model):
     availability = models.BooleanField(verbose_name="Наличие")
 
     def save(self, *args, **kwargs) -> None:
+        """
+        add slug for creating Good object
+        and save it
+        """
+
         if not self.slug:
             self.slug = slugify_name(self.name)
         super(Good, self).save(*args, **kwargs)

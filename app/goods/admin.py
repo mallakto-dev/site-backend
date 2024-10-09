@@ -12,3 +12,19 @@ class CategoryAdmin(admin.ModelAdmin):
 class GoodAdmin(admin.ModelAdmin):
     list_display = ["name", "availability"]
     list_editable = ["availability"]
+    readonly_fields = ["slug"]
+    fields = [
+        "name",
+        "slug",
+        "img_url",
+        "img_caption",
+        "alternative_text",
+        "description",
+        "price",
+        "ingredients",
+        "category",
+        "nutrition_facts",
+        "shelf_life",
+        "weight",
+        "availability",
+    ]
