@@ -12,5 +12,6 @@ class OrderItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
+    list_display = ["__str__", "created_at"]
     inlines = (OrderItemInline,)
     readonly_fields = ["username", "amount"]

@@ -10,4 +10,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Good)
 class GoodAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["name", "availability"]
+    list_editable = ["availability"]

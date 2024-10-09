@@ -28,7 +28,7 @@ class Order(models.Model):
         max_length=250, blank=True, verbose_name="Адрес"
     )
 
-    created = models.DateTimeField(auto_now_add=True, verbose_name="Создан")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создан")
 
     payment_type = models.CharField(
         choices={"card": "Перевод", "cash": "Наличные"},
@@ -43,7 +43,7 @@ class Order(models.Model):
     )
 
     class Meta:
-        ordering = ("-created",)
+        ordering = ("-created_at",)
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
 
