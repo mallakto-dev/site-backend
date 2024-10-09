@@ -8,5 +8,8 @@ make install
 # Apply any outstanding database migrations
 make migrate
 
+# Convert static asset files
+python manage.py collectstatic --no-input
+
 #flush to database
 poetry run python manage.py loaddata dumpdb.json.gz
