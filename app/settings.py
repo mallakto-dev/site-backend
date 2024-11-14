@@ -22,6 +22,7 @@ DEBUG = os.getenv("DEBUG", False) == "True"
 
 ALLOWED_HOSTS = ["localhost"]
 
+
 if os.getenv("ALLOWED_HOSTS"):
     ALLOWED_HOSTS += os.getenv("ALLOWED_HOSTS").split(" ")
 
@@ -143,3 +144,8 @@ EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
 EMAIL_PORT = os.getenv("EMAIL_PORT")
+
+if DEBUG:
+    INTERNAL_IPS = ["127.0.0.1"]
+    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+    INSTALLED_APPS += ["debug_toolbar"]
