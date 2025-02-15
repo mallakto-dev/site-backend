@@ -95,6 +95,8 @@ class Good(models.Model):
 
     availability = models.BooleanField(verbose_name="Наличие")
 
+    objects = models.Manager()
+
     def save(self, *args, **kwargs) -> None:
         """
         add slug for creating Good object

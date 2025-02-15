@@ -39,7 +39,12 @@ INSTALLED_APPS = [
     "app.orders",
     "rest_framework",
     "phonenumber_field",
+    "drf_spectacular",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

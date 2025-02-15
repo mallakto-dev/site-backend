@@ -16,7 +16,6 @@ class CategoryViewSet(
 class GoodViewSet(
     mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet
 ):
-
-    queryset = Good.objects.all().prefetch_related("category")
+    queryset = Good.objects.all().select_related("category")
     serializer_class = GoodSerializer
     lookup_field = "slug"
