@@ -21,7 +21,7 @@ class Order(models.Model):
 
     name = models.CharField(max_length=50, verbose_name="Имя")
 
-    phone = PhoneNumberField(region="RU", max_length=12)
+    phone = PhoneNumberField(region="RU", max_length=16)
 
     email = models.EmailField()
 
