@@ -5,6 +5,7 @@ from rest_framework import routers
 
 from app.goods.views import CategoryViewSet, GoodViewSet
 from app.orders.views import OrderViewSet
+from app.settings import DEBUG
 
 
 router = routers.SimpleRouter()
@@ -20,7 +21,8 @@ urlpatterns = [
     path(
         "docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="docs"
     ),
-    path("__debug__/", include("debug_toolbar.urls")),
 ]
+if DEBUG:
+    urlpatterns += path("__debug__/", include("debug_toolbar.urls"))
 
 urlpatterns += router.urls
